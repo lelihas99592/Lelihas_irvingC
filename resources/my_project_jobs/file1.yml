@@ -1,0 +1,11 @@
+resources:
+  jobs:
+    sample_bundle_job:
+      name: sample_bundle_job
+
+      tasks:
+        - task_key: run_sql
+          sql_task:
+            query:
+              query: |
+                SELECT current_timestamp() AS current_time;

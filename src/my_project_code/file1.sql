@@ -1,0 +1,1 @@
+SELECT "Hello Databricks CI/CD" AS message;

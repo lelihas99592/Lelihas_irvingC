@@ -1,0 +1,24 @@
+bundle:
+  name: <BUNDLE_NAME>
+
+workspace:
+  root_path: /Shared/<BUNDLE_NAME>/${bundle.target}
+
+include:
+  - resources/my_project_jobs/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: <DEV_WORKSPACE_URL>
+    include:
+      - resources/env_vars/dev.yml
+
+  prod:
+    mode: production
+    workspace:
+      host: <PROD_WORKSPACE_URL>
+    include:
+      - resources/env_vars/prod.yml

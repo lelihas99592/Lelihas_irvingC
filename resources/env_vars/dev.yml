@@ -1,0 +1,6 @@
+variables:
+  # Add your variables and dev values here
+  # These are referenced in resources/my_project_jobs/*.yml as ${var.<name>}
+  catalog_name: <DEV_CATALOG_NAME>
+  schema_name: <DEV_SCHEMA_NAME>
+  # my_var: my_dev_value
