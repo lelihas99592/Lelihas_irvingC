@@ -1,24 +1,17 @@
 bundle:
-  name: <BUNDLE_NAME>
-
-workspace:
-  root_path: /Shared/<BUNDLE_NAME>/${bundle.target}
+  name: lelihas_irvingc_bundle
 
 include:
-  - resources/my_project_jobs/*.yml
+  - resources/**/*.yml
 
 targets:
   dev:
-    mode: development
     default: true
     workspace:
-      host: <DEV_WORKSPACE_URL>
-    include:
-      - resources/env_vars/dev.yml
+      host: ${env.DATABRICKS_HOST_DEV}
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
 
   prod:
-    mode: production
     workspace:
-      host: <PROD_WORKSPACE_URL>
-    include:
-      - resources/env_vars/prod.yml
+      host: ${env.DATABRICKS_HOST_PROD}
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
