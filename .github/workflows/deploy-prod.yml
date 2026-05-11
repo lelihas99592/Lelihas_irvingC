@@ -5,22 +5,23 @@ on:
     branches:
       - main
 
-env:
-  DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_PROD }}
-  DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_PROD }}
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: prod
+
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST_PROD }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN_PROD }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
       - name: Install Databricks CLI
-        run: curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+        uses: databricks/setup-cli@main
 
-      - name: Validate
+      - name: Validate bundle
         run: databricks bundle validate --target prod
 
-      - name: Deploy
+      - name: Deploy bundle
         run: databricks bundle deploy --target prod
