@@ -1,11 +1,9 @@
 resources:
   jobs:
     sample_bundle_job:
-      name: sample_bundle_job
+      name: lelihas_sample_bundle_job_${bundle.target}
 
       tasks:
-        - task_key: run_sql
-          sql_task:
-            query:
-              query: |
-                SELECT current_timestamp() AS current_time;
+        - task_key: run_sql_file
+          notebook_task:
+            notebook_path: ../../src/my_project_code/file1.sql
