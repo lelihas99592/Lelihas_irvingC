@@ -1,5 +1,5 @@
 variables:
-  # Same variable names as dev.yml, prod values
-  catalog_name: <PROD_CATALOG_NAME>
-  schema_name: <PROD_SCHEMA_NAME>
-  # my_var: my_prod_value
+  catalog_name:
+    default: prod
+  schema_name:
+    default: testing
